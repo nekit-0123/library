@@ -1,0 +1,42 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>Редактирование библиотеки</h1>
+
+<%= form_for @lib, :url =>{:action => "update", :id =>@lib} do |f| %>
+
+  <p>Номер библиотеки: <%= f.text_field 'libs_number' %></p>
+  <p>Наимнование библиотеки: <%= f.text_field 'libs_name' %></p>
+  <p>Адрес: <%= f.text_field 'libs_adres' %></p>
+  <%= f.submit "Сохранить" %>
+<% end %>
+
+<%= link_to 'Назад', {:action => 'list' } %>

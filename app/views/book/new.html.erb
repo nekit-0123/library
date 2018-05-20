@@ -1,0 +1,68 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>добавление новой книги</h1>
+
+<%= form_tag :action => 'create' do %>
+  <strong>
+    <p><label for="book_name_book">Название книги</label>:
+      <%= text_field('books', 'name_book') %>
+  </strong>
+
+    <p><label for="book_autor">Автор</label>:
+      <%= text_field('books', 'autor') %>
+<strong>
+ <label for="book_code">Шифр</label>:
+    <%= text_field('books', 'code') %>
+  </strong>
+  <p><label for="book_publiching">Издательство</label>:
+    <%= text_field('books', 'publiching') %>
+
+  <p><label for="book_date_pub">Дата публикации</label>:
+    <%= date_field('books', 'date_pub') %>
+
+
+
+  <p><label for="book_phone">Цена</label>:
+    <%= text_field('books', 'price') %>
+
+  <p><label for="book_date_start">Дата поступления</label>:
+    <%= date_field('books', 'date_start') %>
+
+
+  <p><label for="user_lib_id">Библиотека</label>:
+    <%= collection_select(:books, :lib_id, @libs, :id, :libs_name, prompt: true) %></p>
+
+    <br>
+  <%= submit_tag "Создать" %>
+
+<% end -%>
+<%= link_to 'Назад', {:action => 'list'} %>

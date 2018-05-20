@@ -1,0 +1,45 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1><%= @user.user_last_name %></h1>
+<p>
+  <strong>Номер билета: </strong> <%= @user.number_ticket %><br />
+  <strong>Фамилия: </strong> <%= @user.user_last_name %><br />
+  <strong>Имя: </strong> <%= @user.user_name %><br />
+  <strong>Отчество: </strong> <%= @user.user_second_name %><br />
+  <strong>Адрес: </strong> <%= @user.user_adres %><br />
+  <strong>Телефон: </strong> <%= @user.phone %><br />
+  Библиотека в которой находится абонент
+
+  <%= @user.lib.libs_name %><br />
+</p>
+<hr />
+<%= link_to 'Назад', {:action => 'list'} %>

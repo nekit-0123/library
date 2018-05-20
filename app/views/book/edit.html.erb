@@ -1,0 +1,49 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>Редактирование книг</h1>
+
+<%= form_for @book, :url =>{:action => "update", :id =>@book} do |f| %>
+
+  <p>Название книги: <%= f.text_field 'name_book' %></p>
+  <p>Автор: <%= f.text_field 'autor' %></p>
+  <p>Шифр: <%= f.text_field 'code' %></p>
+  <p>Издательство: <%= f.text_field 'publiching' %></p>
+  <p>Год издания: <%= f.date_field 'date_pub' %></p>
+  <p>Цена: <%= f.text_field 'price' %></p>
+  <p>Дата поступления: <%= f.date_field 'date_start' %></p>
+  <p>Библиотека:
+  <p><%= f.collection_select :lib_id, Lib.all, :id, :libs_name %></p>
+
+  <%= f.submit "Сохранить изменения" %>
+<% end %>
+
+<%= link_to 'Назад', {:action => 'list' } %>

@@ -1,0 +1,47 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>редактирование выдачи</h1>
+
+<%= form_for @out, :url =>{:action => "update", :id =>@out} do |f| %>
+
+
+  <p>Абонент: <%= collection_select(:out, :user_id, @users, :id, :user_last_name, prompt: true) %></p>
+  <p>Книга: <%= collection_select(:out, :book_id, @books, :id, :name_book, prompt: true) %></p>
+
+  <p>Дата выдачи: <%= f.date_field 'date_grant' %></p>
+  <p>Дата возврата: <%= f.date_field 'date_return' %></p>
+
+
+  <%= f.submit "Сохранить изменения" %>
+<% end %>
+
+<%= link_to 'Назад', {:action => 'list' } %>

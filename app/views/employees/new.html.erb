@@ -1,0 +1,74 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>добавить нового сотрудника</h1>
+
+<%= form_tag :action => 'create' do %>
+
+  <strong>
+  <p><label for = "employee_name">Имя</label>:
+    <%= text_field('employees', 'name') %>
+  </strong>
+  <strong>
+  <p><label for = "employee_last_name">Фамилия</label>:
+    <%= text_field('employees', 'last_name') %>
+  </strong>
+  <p><label for="employee_second_name">Отчество</label>:
+    <%= text_field('employees', 'second_name') %>
+
+  <p><label for="employee_birth_date">Дата рождения</label>:
+    <%= date_field('employees', 'birth_date') %>
+
+  <p><label for="employee_job_date">Дата принятия на работу</label>:
+    <%= date_field('employees', 'job_date') %>
+
+
+
+  <p><label for="employee_education">Образование</label>:
+    <%= text_field('employees', 'education') %>
+
+    <strong>
+  <p><label for="employee_position">Должность</label>:
+    <%= text_field('employees', 'position') %>
+
+
+
+  <p><label for="employee_lib_id">Библиотека в которой работает</label>:
+    <%= collection_select(:employees, :lib_id, @libs, :id, :libs_name, prompt: true) %></p>
+
+
+<br>
+
+  <%= submit_tag "Создать" %>
+  <br>
+
+<% end -%>
+<%= link_to 'Назад', {:action => 'list'} %>

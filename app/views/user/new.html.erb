@@ -1,0 +1,68 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>Добавление нового абонента</h1>
+
+<%= form_tag :action => 'create' do %>
+  <strong>
+    <p><label for="user_number_ticket"> Номер билета</label>:
+      <%= text_field('users', 'number_ticket') %>
+
+
+  <p><label for="user_last_name">Фамилия</label>:
+    <%= text_field('users', 'user_last_name') %>
+
+      <label for="user_user_name">Имя</label>:
+      <%= text_field('users', 'user_name') %>
+    </strong>
+  <p><label for="user_user_second_name">Отчество</label>:
+    <%= text_field('users', 'user_second_name') %>
+    <strong>
+  <p><label for="user_user_adres">Адрес</label>:
+    <%= text_field('users', 'user_adres') %>
+
+
+
+  <p><label for="user_phone">Телефон</label>:
+    <%= text_field('users', 'phone') %>
+
+
+
+
+  <p><label for="user_lib_id">Библиотека</label>:
+    <%= collection_select(:users, :lib_id, @libs, :id, :libs_name, prompt: true) %></p>
+
+
+    <br>
+    <%= submit_tag "Создать" %>
+
+<% end -%>
+<%= link_to 'Назад', {:action => 'list'} %>

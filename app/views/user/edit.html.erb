@@ -1,0 +1,44 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>Редактирование абонента</h1>
+<%= form_for @user, :url =>{:action => "update", :id =>@user} do |f| %>
+  <p>Номер билета: <%= f.text_field 'number_ticket' %></p>
+  <p>Фамилия: <%= f.text_field 'user_last_name' %></p>
+  <p>Имя: <%= f.text_field 'user_name' %></p>
+  <p>Отчество: <%= f.text_field 'user_second_name' %></p>
+  <p>Адрес: <%= f.text_field 'user_adres' %></p>
+  <p>Телефон: <%= f.text_field 'phone' %></p>
+  Библиотека
+  <p><%= f.collection_select :lib_id, Lib.all, :id, :libs_name %></p>
+  <%= f.submit "Сохранить изменения" %>
+<% end %>
+<%= link_to 'Назад', {:action => 'list' } %>

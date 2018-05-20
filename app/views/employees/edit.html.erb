@@ -1,0 +1,43 @@
+<nav>
+  <ul class="topmenu">
+
+    <li><a> <%= link_to "Сотрудники", employees_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новом сотруднике", employees_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Выдача", out_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о выдачи", out_new_path %></a>
+      </ul>
+    <li><a> <%= link_to "Книги", book_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых книгах", book_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Библиотеки", lib_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых библиотеках", lib_new_path %></a>
+
+      </ul>
+    </li>
+    <li><a> <%= link_to "Абоненты", user_list_path %></a>
+      <ul class="submenu">
+        <li><a> <%= link_to "Создать информацию о новых абонентах", user_new_path %></a>
+
+      </ul>
+    </li>
+  </ul>
+</nav><h1>Редактирование информации о сотруднике</h1>
+<%= form_for @employee, :url =>{:action => "update", :id =>@employee} do |f| %>
+  <p>Имя: <%= f.text_field 'name' %></p>
+  <p>Фамилия: <%= f.text_field 'last_name' %></p>
+  <p>Отчество: <%= f.text_field 'second_name' %></p>
+  <p>Образование: <%= f.text_field 'position' %></p>
+  <p>Должность: <%= f.text_field 'education' %></p>
+  <p>Дата рождения: <%= f.date_field 'birth_date' %></p>
+  <p>Дата принятия на работу: <%= f.date_field 'job_date' %></p>
+  <p>Библиотека в которой работает: <%= collection_select(:employee, :lib_id, @libs, :id, :libs_name, prompt: true) %></p>
+  <%= f.submit "Сохранить изменения" %>
+<% end %>
+<%= link_to 'Назад', {:action => 'list' } %>
